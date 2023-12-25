@@ -1,5 +1,6 @@
 //#region Imports
 import webPush from 'web-push';
+import { catchErrorMethod } from '../core/helpers/catch-error-method';
 //#endregion
 
 //#region Interface and types
@@ -13,15 +14,15 @@ export interface IPayloadNotificationPush {
         actions?: TActions;
         vibrate?: string | Array<number>; // "<Array of Integers>"
         sound?: string; // "<URL String>"
-        dir?: string; // "<String of 'auto' | 'ltr' | 'rtl'>"
+        dir?: | 'ltr' | 'rtl' | 'auto'; // "<String of 'auto' | 'ltr' | 'rtl'>"
         tag?: string; // "<String>"
         requireInteraction?: boolean;
         renotify?: boolean;
         silent?: boolean;
         timestamp?: any;
         data?: {
-            onActionClick: TOnActionClick;
-        }
+            onActionClick?: TOnActionClick;
+        } & { [n: string]: any }
     }
 }
 
@@ -35,6 +36,16 @@ type TOnActionClick = {
     [n: string]: { operation: TOperation; url: string }
 };
 
+/**
+ * openWindow Abre en una pestaña nueva
+ * 
+ * navigateLastFocusedOrOpen Navega con la url pasada y en la útima pestaña abierta
+ * 
+ * focusLastFocusedOrOpen Muestra la última pestaña abierta
+ * 
+ * sendRequest Hace una petición
+ * 
+ */
 type TOperation = 'openWindow' | 'navigateLastFocusedOrOpen' | 'focusLastFocusedOrOpen' | 'sendRequest'
 //#endregion
 
@@ -75,7 +86,7 @@ export class NotificationPush {
             //     }
             // }
         } catch (error: any) {
-            console.log("error", error.message);
+            catchErrorMethod(error);
         }
     }
 }
