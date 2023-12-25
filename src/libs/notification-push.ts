@@ -50,10 +50,7 @@ type TOperation = 'openWindow' | 'navigateLastFocusedOrOpen' | 'focusLastFocused
 //#endregion
 
 export class NotificationPush {
-    private static key = {
-        publicKey: "BMq3KjdEuQHQGmw3PzbTf0tRlNuOUbGC7RfSlaeYV4cvbU0iutBVqL2-rnZ6w8sNKfKpM8XNT3lhArvodzao68g",
-        privateKey: "cHRvtnMtvKyzIGpVVLyhwLL7C59tv-DrK6ObQuJzln8"
-    }
+    private static key = { publicKey: "BLrxfYVLvIZ32asQb490brzp0sFX6YLDW9yvRPFYWdkExipIfiyQk4TuUqF_K1iWWwtGZF-dRu9yAz5LLFu_8KM", privateKey: "EFYk3eSdT2j4T-bBWK9cmaJX1yFGseQwIppuy-vaSEg" }
 
     protected subject: string = 'mailto:email.test@gmil.com';
     protected options: webPush.RequestOptions = {

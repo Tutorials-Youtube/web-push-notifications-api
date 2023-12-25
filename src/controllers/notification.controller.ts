@@ -29,8 +29,8 @@ class NotificationController extends Controller {
                         { action: 'reply', title: 'Responder', type: 'text' },
                         { action: 'send', title: 'Send' }
                     ],
-                    tag: 'chat',
-                    renotify: true,
+                    // tag: 'chat',
+                    // renotify: true,
                     data: {
                         onActionClick: {
                             default: { operation: 'openWindow', url: '#/chats/' },
@@ -42,7 +42,8 @@ class NotificationController extends Controller {
                                 operation: 'sendRequest',
                                 url: 'http://localhost:3000/api/abrev/v1/notifications/'
                             }
-                        }
+                        },
+                        // name: "jairo Antonio"
                     },
                     // badge: 'assets/icons/badge.png'
                 },
